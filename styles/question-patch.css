@@ -1,0 +1,46 @@
+/* line 5, stdin */
+.h5p-question-modal-feedback-container {
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10; }
+  /* line 14, stdin */
+  .h5p-question-modal-feedback-container .h5p-question-modal-inner {
+    background-color: #E1C498;
+    bottom: 10%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 10%; }
+    /* line 22, stdin */
+    .h5p-question-modal-feedback-container .h5p-question-modal-inner .image, .h5p-question-modal-feedback-container .h5p-question-modal-inner .response, .h5p-question-modal-feedback-container .h5p-question-modal-inner .buttons {
+      position: absolute;
+      opacity: 0.8; }
+    /* line 26, stdin */
+    .h5p-question-modal-feedback-container .h5p-question-modal-inner .image {
+      bottom: 0;
+      left: 0;
+      right: 66%;
+      top: 0; }
+    /* line 34, stdin */
+    .h5p-question-modal-feedback-container .h5p-question-modal-inner .response {
+      bottom: 100px;
+      top: 0;
+      right: 0;
+      left: 34%; }
+    /* line 42, stdin */
+    .h5p-question-modal-feedback-container .h5p-question-modal-inner .buttons {
+      bottom: 0;
+      height: 100px;
+      right: 0;
+      left: 34%; }
+      /* line 49, stdin */
+      .h5p-question-modal-feedback-container .h5p-question-modal-inner .buttons a, .h5p-question-modal-feedback-container .h5p-question-modal-inner .buttons button {
+        background-color: #FFA421;
+        border: none;
+        display: inline-block;
+        margin-left: 3%;
+        width: 30%; }

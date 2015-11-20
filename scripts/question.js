@@ -671,28 +671,77 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
      * @param {number} score The score
      * @param {number} maxScore The maximum score for this question
      */
-    self.setFeedback = function (content, score, maxScore) {
+    self.setFeedback = function (content, score, maxScore, modaledFeedbackData) {
 
       // Feedback is disabled
       if (behaviour.disableFeedback) {
         return self;
       }
-
+      
       if (content) {
-        var $feedback = $('<div>', {
-          'class': 'h5p-question-feedback-container'
-        });
+        if(modaledFeedbackData && modaledFeedbackData.modalEnabled === true) {
 
-        if (scoreBar === undefined) {
-          scoreBar = JoubelUI.createScoreBar(maxScore);
+          // get data based on answer
+          var data;
+          if(score == 0) {
+            data = modaledFeedbackData['feedbackModalWrong'];
+          } else {
+            data = modaledFeedbackData['feedbackModalRight'];
+          }
+
+          // Create buttons
+          var buttons = '';
+          for (i = 0; i < data.feedbackButtons.length; i++) { 
+              if (data.feedbackButtons[i].link) {
+                buttons += '<a class="feedback-btn" TARGET="_parent" href="' + data.feedbackButtons[i].link + '">' + data.feedbackButtons[i].text + '</a>';
+              } else if (data.feedbackButtons[i].resetQuestion) {
+                buttons += '<button class="feedback-btn feedback-btn-reset-question">' + data.feedbackButtons[i].text + '</button>';
+              } else {
+                buttons += '<button class="feedback-btn feedback-btn-goto-slide" data-slide="' + data.feedbackButtons[i].slide + '">' + data.feedbackButtons[i].text + '</button>';
+              }
+
+          }
+          // Generate feedback modal
+          var $feedback = $('<div>', {
+            'class': 'h5p-question-modal-feedback-container'
+          });
+
+          // Compile modal inner HTML
+          var innerHtml =
+            '<div class="h5p-question-modal-inner">' +
+            '  <div class="image">' + 
+            '    <img src="' + H5P.getPath(data.image.path, modaledFeedbackData.contentId) + '">' +
+            '  </div>' +
+            '  <div class="response">' +
+            '    <h1>' + data.response + '</h1>' +
+            '  </div>' +
+            '  <div class="buttons">' + 
+            buttons +
+            '  </div>' +
+            '</div>';
+
+          // inject inner HTML into modal
+          $feedback.html(innerHtml);
+
+
+        } else { // standard feedback window
+          var $feedback = $('<div>', {
+            'class': 'h5p-question-feedback-container'
+          });
+
+          if (scoreBar === undefined) {
+            scoreBar = JoubelUI.createScoreBar(maxScore);
+          }
+          scoreBar.appendTo($feedback);
+          scoreBar.setScore(score);
+          $feedback.append($('<div>', {
+            'class': 'h5p-question-feedback-content',
+            'html': content
+          }));
+
         }
-        scoreBar.appendTo($feedback);
-        scoreBar.setScore(score);
-        $feedback.append($('<div>', {
-          'class': 'h5p-question-feedback-content',
-          'html': content
-        }));
 
+        // append section
         showFeedback = true;
         if (sections.feedback) {
           // Update section
@@ -705,6 +754,10 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
             insert(self.order, 'feedback', sections, $wrapper);
           }
         }
+
+        // register feedback modal buttons
+        registerFeedbackModalBtn(true);
+
         // Show feedback section
         setTimeout(function () {
           sections.feedback.$element.addClass('h5p-question-visible');
@@ -722,13 +775,16 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
         }, 0);
 
       }
-      else if (sections.feedback && showFeedback) {
+      else if (sections.feedback && showFeedback) { // this closes feedback? if it exists and show feedback is set
         showFeedback = false;
 
         // Hide feedback section
         sections.feedback.$element.removeClass('h5p-question-visible');
         sections.feedback.$element.css('max-height', '');
         sectionsIsTransitioning = true;
+
+        // remove listeners for feedback modal buttons
+        registerFeedbackModalBtn(false);
 
         // Detach after transition
         setTimeout(function () {
@@ -740,12 +796,43 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
             self.trigger('resize');
           }
           sectionsIsTransitioning = false;
-          scoreBar.setScore(0);
+          if (scoreBar !== undefined) {
+            scoreBar.setScore(0);
+          }
         }, 150);
       }
 
       return self;
     };
+
+    /**
+     * Control jump to slide events
+     *
+     * @private
+     * @param {string} section ID of the section
+     * @param {(string|H5P.jQuery)} content
+     */
+    var registerFeedbackModalBtn = function (toggle) {
+      if (toggle === true) { // enable 
+        $('.feedback-btn-goto-slide').on('click', function () {
+          var dataSlide = parseInt( $(this).attr('data-slide') );
+          self.parent.jumpToSlide( dataSlide );
+
+          // reset feedback
+          self.setFeedback();
+        })
+
+        $('.feedback-btn-reset-question').on('click', function () {
+          self.resetTask();
+        })
+        return;
+      }
+
+      $('.feedback-btn-goto-slide').off('click');
+      $('.feedback-btn-reset-question').off('click');
+
+    };
+
 
     /**
      * Set feedback content (no animation).
