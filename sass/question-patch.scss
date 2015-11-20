@@ -1,0 +1,58 @@
+// .hello {
+// 	background-color: red;
+// }
+
+.h5p-question-modal-feedback-container {
+    background-color: rgba(0,0,0,0.8);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+
+    .h5p-question-modal-inner {
+    	background-color: #E1C498;
+    	bottom: 10%;
+    	left: 0;
+    	position: absolute;
+    	right: 0;
+    	top: 10%;
+		
+		.image, .response, .buttons {
+    		position: absolute;
+    		opacity: 0.8;
+		}
+    	.image {
+    		// background-color: red;
+    		bottom: 0;
+    		left: 0;
+    		right: 66%;
+    		top: 0;
+    	}
+
+    	.response {
+    		// background-color: blue;
+    		bottom: 100px;
+    		top: 0;
+    		right: 0;
+    		left: 34%;
+    	}
+
+    	.buttons {
+    		// background-color: green;
+    		bottom: 0;
+    		height: 100px;
+    		right: 0;
+    		left: 34%;
+
+    		a, button {
+    			background-color: #FFA421;
+    			border: none;
+    			display: inline-block;
+    			margin-left: 3%;
+    			width: 30%;
+    		}
+    	}
+    }
+}
