@@ -816,7 +816,7 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
       if (toggle === true) { // enable 
         $('.feedback-btn-goto-slide').on('click', function () {
           var dataSlide = parseInt( $(this).attr('data-slide') );
-          self.parent.jumpToSlide( dataSlide );
+          self.parent.jumpToSlide( dataSlide - 1 ); // zero indexed
 
           // reset feedback
           self.setFeedback();
