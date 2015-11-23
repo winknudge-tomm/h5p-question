@@ -693,11 +693,11 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
           var buttons = '';
           for (i = 0; i < data.feedbackButtons.length; i++) { 
               if (data.feedbackButtons[i].link) {
-                buttons += '<a class="feedback-btn" TARGET="_parent" href="' + data.feedbackButtons[i].link + '">' + data.feedbackButtons[i].text + '</a>';
+                buttons += '<a class="h5p-joubelui-button feedback-btn" TARGET="_parent" href="' + data.feedbackButtons[i].link + '">' + data.feedbackButtons[i].text + '</a>';
               } else if (data.feedbackButtons[i].resetQuestion) {
-                buttons += '<button class="feedback-btn feedback-btn-reset-question">' + data.feedbackButtons[i].text + '</button>';
+                buttons += '<button class="h5p-joubelui-button feedback-btn feedback-btn-reset-question">' + data.feedbackButtons[i].text + '</button>';
               } else {
-                buttons += '<button class="feedback-btn feedback-btn-goto-slide" data-slide="' + data.feedbackButtons[i].slide + '">' + data.feedbackButtons[i].text + '</button>';
+                buttons += '<button class="h5p-joubelui-button feedback-btn feedback-btn-goto-slide" data-slide="' + data.feedbackButtons[i].slide + '">' + data.feedbackButtons[i].text + '</button>';
               }
 
           }

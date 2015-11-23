@@ -23,24 +23,41 @@
     .h5p-question-modal-feedback-container .h5p-question-modal-inner .image {
       bottom: 0;
       left: 0;
+      overflow: hidden;
       right: 66%;
       top: 0; }
-    /* line 34, stdin */
+      /* line 34, stdin */
+      .h5p-question-modal-feedback-container .h5p-question-modal-inner .image img {
+        position: absolute;
+        left: 50%;
+        min-width: 100px;
+        top: 50%;
+        width: 60%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%); }
+    /* line 50, stdin */
     .h5p-question-modal-feedback-container .h5p-question-modal-inner .response {
       bottom: 100px;
       top: 0;
       right: 0;
+      text-align: center;
       left: 34%; }
-    /* line 42, stdin */
+      /* line 58, stdin */
+      .h5p-question-modal-feedback-container .h5p-question-modal-inner .response h1 {
+        color: #323232;
+        font-family: H5PDroidSans, sans-serif;
+        margin-top: 15%; }
+    /* line 65, stdin */
     .h5p-question-modal-feedback-container .h5p-question-modal-inner .buttons {
       bottom: 0;
-      height: 100px;
-      right: 0;
-      left: 34%; }
-      /* line 49, stdin */
-      .h5p-question-modal-feedback-container .h5p-question-modal-inner .buttons a, .h5p-question-modal-feedback-container .h5p-question-modal-inner .buttons button {
-        background-color: #FFA421;
-        border: none;
-        display: inline-block;
-        margin-left: 3%;
-        width: 30%; }
+      height: 20%;
+      left: 34%;
+      text-align: center;
+      right: 0; }
+      /* line 73, stdin */
+      .h5p-question-modal-feedback-container .h5p-question-modal-inner .buttons a {
+        font-weight: normal;
+        text-decoration: none; }

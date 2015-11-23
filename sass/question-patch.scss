@@ -27,8 +27,24 @@
     		// background-color: red;
     		bottom: 0;
     		left: 0;
+            overflow: hidden;
     		right: 66%;
     		top: 0;
+
+            img {
+                position: absolute;
+                left: 50%;
+                // margin: 50% 0 0 50%;
+                min-width: 100px;
+                top: 50%;
+                width: 60%;
+
+                -webkit-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+            }
     	}
 
     	.response {
@@ -36,22 +52,34 @@
     		bottom: 100px;
     		top: 0;
     		right: 0;
+            text-align: center;
     		left: 34%;
+
+            h1 {
+                color: #323232;
+                font-family: H5PDroidSans, sans-serif;
+                margin-top: 15%;
+            }
     	}
 
     	.buttons {
     		// background-color: green;
     		bottom: 0;
-    		height: 100px;
-    		right: 0;
+    		height: 20%;
     		left: 34%;
-
+            text-align: center;
+            right: 0;
+            
+            a {
+                font-weight: normal;
+                text-decoration: none;
+            }
     		a, button {
-    			background-color: #FFA421;
-    			border: none;
-    			display: inline-block;
-    			margin-left: 3%;
-    			width: 30%;
+    			// background-color: #FFA421;
+    			// border: none;
+    			// display: inline-block;
+    			// margin-left: 3%;
+    			// width: 30%;
     		}
     	}
     }
