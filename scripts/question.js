@@ -692,15 +692,15 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
           // Create buttons
           var buttons = '';
           for (i = 0; i < data.feedbackButtons.length; i++) { 
-              if (data.feedbackButtons[i].link) {
+              if (data.feedbackButtons[i].link) { // if link overide
                 buttons += '<a class="h5p-joubelui-button feedback-btn" TARGET="_parent" href="' + data.feedbackButtons[i].link + '">' + data.feedbackButtons[i].text + '</a>';
-              } else if (data.feedbackButtons[i].resetQuestion) {
+              } else if (data.feedbackButtons[i].slide) { // if a slide number is set
+                buttons += '<button class="h5p-joubelui-button feedback-btn feedback-btn-goto-slide" data-slide="' + data.feedbackButtons[i].slide + '" data-reset="' + data.feedbackButtons[i].resetQuestion + '">' + data.feedbackButtons[i].text + '</button>';
+              } else if (data.feedbackButtons[i].resetQuestion) { // reset question
                 buttons += '<button class="h5p-joubelui-button feedback-btn feedback-btn-reset-question">' + data.feedbackButtons[i].text + '</button>';
-              } else {
-                buttons += '<button class="h5p-joubelui-button feedback-btn feedback-btn-goto-slide" data-slide="' + data.feedbackButtons[i].slide + '">' + data.feedbackButtons[i].text + '</button>';
               }
-
           }
+
           // Generate feedback modal
           var $feedback = $('<div>', {
             'class': 'h5p-question-modal-feedback-container'
@@ -816,10 +816,17 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
       if (toggle === true) { // enable 
         $('.feedback-btn-goto-slide').on('click', function () {
           var dataSlide = parseInt( $(this).attr('data-slide') );
+          var dataResetAlso = $(this).attr('data-reset');
+
           self.parent.jumpToSlide( dataSlide - 1 ); // zero indexed
 
           // reset feedback
           self.setFeedback();
+
+          // reset question if checked
+          if (dataResetAlso == 'true') {
+            self.resetTask();
+          }
         })
 
         $('.feedback-btn-reset-question').on('click', function () {
