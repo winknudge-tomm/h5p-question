@@ -8,6 +8,10 @@
   width: 100%;
   z-index: 10; }
   /* line 14, stdin */
+  .h5p-question-modal-feedback-container.modaled-feedback-drag {
+    bottom: 25px;
+    height: auto; }
+  /* line 19, stdin */
   .h5p-question-modal-feedback-container .h5p-question-modal-inner {
     background-color: #E1C498;
     bottom: 10%;
@@ -15,18 +19,18 @@
     position: absolute;
     right: 0;
     top: 10%; }
-    /* line 22, stdin */
+    /* line 27, stdin */
     .h5p-question-modal-feedback-container .h5p-question-modal-inner .image, .h5p-question-modal-feedback-container .h5p-question-modal-inner .response, .h5p-question-modal-feedback-container .h5p-question-modal-inner .buttons {
       position: absolute;
       opacity: 0.8; }
-    /* line 26, stdin */
+    /* line 31, stdin */
     .h5p-question-modal-feedback-container .h5p-question-modal-inner .image {
       bottom: 0;
       left: 0;
       overflow: hidden;
       right: 66%;
       top: 0; }
-      /* line 34, stdin */
+      /* line 39, stdin */
       .h5p-question-modal-feedback-container .h5p-question-modal-inner .image img {
         position: absolute;
         left: 50%;
@@ -38,26 +42,26 @@
         -ms-transform: translate(-50%, -50%);
         -o-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%); }
-    /* line 50, stdin */
+    /* line 55, stdin */
     .h5p-question-modal-feedback-container .h5p-question-modal-inner .response {
       bottom: 100px;
       top: 0;
       right: 0;
       text-align: center;
       left: 34%; }
-      /* line 58, stdin */
+      /* line 63, stdin */
       .h5p-question-modal-feedback-container .h5p-question-modal-inner .response h1 {
         color: #323232;
         font-family: H5PDroidSans, sans-serif;
         margin-top: 15%; }
-    /* line 65, stdin */
+    /* line 70, stdin */
     .h5p-question-modal-feedback-container .h5p-question-modal-inner .buttons {
       bottom: 0;
       height: 20%;
       left: 34%;
       text-align: center;
       right: 0; }
-      /* line 73, stdin */
+      /* line 78, stdin */
       .h5p-question-modal-feedback-container .h5p-question-modal-inner .buttons a {
         font-weight: normal;
         text-decoration: none; }

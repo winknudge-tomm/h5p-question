@@ -10,7 +10,12 @@
     top: 0;
     width: 100%;
     z-index: 10;
-
+    
+    &.modaled-feedback-drag {
+        bottom: 25px;
+        height: auto;
+    }
+    
     .h5p-question-modal-inner {
     	background-color: #E1C498;
     	bottom: 10%;

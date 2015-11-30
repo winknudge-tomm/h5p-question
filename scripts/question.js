@@ -726,6 +726,14 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
           // inject inner HTML into modal
           $feedback.html(innerHtml);
 
+          // per question type edge cases
+          setTimeout(function() {
+            switch (self.libraryInfo.machineName) {
+              case 'H5P.DragQuestion':
+                $('.h5p-question-modal-feedback-container').addClass('modaled-feedback-drag')
+                break;
+            }
+          }, 1);
 
         } else { // standard feedback window
           var $feedback = $('<div>', {
