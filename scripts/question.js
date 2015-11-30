@@ -733,6 +733,9 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
                 $('.h5p-question-modal-feedback-container').addClass('modaled-feedback-drag')
                 break;
             }
+
+            // and add parent style changer
+            $('.h5p-question-feedback').addClass('modalled-feedback-parent');
           }, 1);
 
         } else { // standard feedback window
