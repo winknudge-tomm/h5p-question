@@ -1,6 +1,8 @@
-// .hello {
-// 	background-color: red;
-// }
+.h5p-question-feedback {
+    &.h5p-question-visible {
+        transition: none;
+    }
+}
 
 .h5p-question-modal-feedback-container {
     background-color: rgba(0,0,0,0.8);
@@ -15,7 +17,7 @@
         bottom: 25px;
         height: auto;
     }
-    
+
     .h5p-question-modal-inner {
     	background-color: #E1C498;
     	bottom: 10%;
