@@ -683,7 +683,7 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
 
           // get data based on answer
           var data;
-          if(score == 0) {
+          if(score != maxScore) {
             data = modaledFeedbackData['feedbackModalWrong'];
           } else {
             data = modaledFeedbackData['feedbackModalRight'];
