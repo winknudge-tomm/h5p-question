@@ -708,16 +708,23 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
           });
 
           // Compile modal inner HTML
-
           var dataImg = (data.image && data.image.path) ? '    <img src="' + H5P.getPath(data.image.path, modaledFeedbackData.contentId) + '">' : '';
+          var responseParagraph = '';
+          var styleType = 'standard';
+
+          if (data.responseParagraph != '') {
+            responseParagraph = '    <div class="response-para">' + data.responseParagraph + '</div>';
+            styleType = "paragraph";
+          }
 
           var innerHtml =
-            '<div class="h5p-question-modal-inner">' +
+            '<div class="h5p-question-modal-inner ' + styleType + '">' +
             '  <div class="image">' + 
             dataImg +
             '  </div>' +
             '  <div class="response">' +
             '    <h1>' + data.response + '</h1>' +
+            responseParagraph +
             '  </div>' +
             '  <div class="buttons">' + 
             buttons +

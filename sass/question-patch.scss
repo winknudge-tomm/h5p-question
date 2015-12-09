@@ -26,6 +26,19 @@
     	position: absolute;
     	right: 0;
     	top: 10%;
+
+        &.paragraph {
+            .response {
+                h1 {
+                    margin-top: 5%;
+                }
+            }
+
+            .response-para {
+                font-size: 0.8em;
+                padding: 0 8%;
+            }
+        }
 		
 		.image, .response, .buttons {
     		position: absolute;
