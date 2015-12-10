@@ -900,6 +900,7 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
      * @param {string} text label
      * @param {function} clicked
      * @param {boolean} [visible=true]
+     * // location
      */
     self.addButton = function (id, text, clicked, visible, location) {
       if (buttons[id]) {
@@ -938,13 +939,15 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
         sections.buttons.$element.addClass('h5p-question-visible');
       }
 
-      if (location.checkLocationX != undefined || location.checkLocationY != undefined) {
-        $e.css({
-          'position': 'fixed',
-          'left': location.checkLocationX,
-          'top': location.checkLocationY
-        })
-      }      
+      if (location){
+        if (location.checkLocationX != undefined || location.checkLocationY != undefined) {
+          $e.css({
+            'position': 'fixed',
+            'left': location.checkLocationX,
+            'top': location.checkLocationY
+          })
+        }      
+      }
 
       return self;
     };
