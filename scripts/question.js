@@ -901,7 +901,7 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
      * @param {function} clicked
      * @param {boolean} [visible=true]
      */
-    self.addButton = function (id, text, clicked, visible) {
+    self.addButton = function (id, text, clicked, visible, location) {
       if (buttons[id]) {
         return self; // Already registered
       }
@@ -919,7 +919,7 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
         text: text
       };
       var $e = buttons[id].$element = JoubelUI.createButton({
-        'class': 'h5p-question-' + id,
+        'class': 'h5p-question-debug-' + id,
         html: text,
         title: text,
         on: {
@@ -928,6 +928,7 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
           }
         }
       });
+
       buttonOrder.push(id);
 
       if (visible === undefined || visible) {
@@ -936,6 +937,14 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
         buttons[id].isVisible = true;
         sections.buttons.$element.addClass('h5p-question-visible');
       }
+
+      if (location != undefined) {
+        $e.css({
+          'position': 'fixed',
+          'left': location.checkLocationX,
+          'top': location.checkLocationY
+        })
+      }      
 
       return self;
     };
