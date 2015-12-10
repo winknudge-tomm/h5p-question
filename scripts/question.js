@@ -938,7 +938,7 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
         sections.buttons.$element.addClass('h5p-question-visible');
       }
 
-      if (location != undefined) {
+      if (location.checkLocationX != undefined || location.checkLocationY != undefined) {
         $e.css({
           'position': 'fixed',
           'left': location.checkLocationX,
